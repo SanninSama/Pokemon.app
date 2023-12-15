@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Batalha
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="randomPokemon">
+    <ion-card-header>
+      <ion-card-title [ngStyle]="{ 'color': (battleResultText === 'Empate' ? 'yellow' : (battleResultText === 'Ganhou' ? 'green' : 'red')) }">{{ randomPokemon.name }} - {{ battleResultText }}</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-img [src]="randomPokemon.sprites.other.dream_world.front_default"></ion-img>
+      
+      <ion-item>
+        <ion-label>Habilidades: {{ randomPokemon.abilities.length }}</ion-label>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Altura: {{ randomPokemon.height / 10 }} m</ion-label>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Peso: {{ randomPokemon.weight / 10 }} kg</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-button (click)="addPhotoToGallery()">
+    <ion-icon name="camera"></ion-icon>
+  </ion-button>
+</ion-fab>
+
+</ion-content>
